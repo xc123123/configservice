@@ -6,4 +6,4 @@ spring:
       uri: http://10.6.201.234:8888
       fail-fast: true
   profiles:
-    active: eureka
+    active: dev
