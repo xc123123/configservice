@@ -1,9 +1,14 @@
+server:
+ port: 8761
+
+eureka:
+ instance:
+  hostname: localhost
+ client:
+  registerWithEureka: false
+  fetchRegistry: false
+  serviceUrl:
+   defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 spring:
   application:
-    name: smartbusz-orderservice
-  cloud:
-    config:
-      uri: http://10.6.201.234:8888
-      fail-fast: true
-  profiles:
-    active: dev
+    name: eureka-server
