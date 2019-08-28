@@ -1,0 +1,43 @@
+server:
+ port: 8181
+
+spring:
+  application:
+    name: consumerservice
+
+
+eureka:
+  instance:
+    prefer-ip-address: true #以IP地址注册到服务中心
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client: #客户端注册进eureka服务列表内
+    registry-fetch-interval-seconds: 10
+    healthcheck:
+      enabled: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+feign:
+  hystrix:
+    enabled: true
+
+
+management:
+  security:
+    enabled: false
+ribbon:
+  ConnectTimeout: 60000
+  ReadTimeout: 60000
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        forceClosed: true
+        sleepWindowInMilliseconds: 50000
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 50000
+
