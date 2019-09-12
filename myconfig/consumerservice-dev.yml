@@ -41,3 +41,7 @@ hystrix:
           thread:
             timeoutInMilliseconds: 50000
 
+logging:
+  file: /usr/log/consumerservice/${spring.application.name}/${spring.application.name}.log
+
+
